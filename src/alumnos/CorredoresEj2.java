@@ -3,34 +3,42 @@ package alumnos;
 
 
 import java.lang.Thread;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CorredoresEj2 implements Runnable{
 
     private String nombreCorredor;
     private int metros;
-    private static int metrosrecorridos;
+    private volatile static int metrosarecorrer;
     static Scanner sc = new Scanner(System.in);
 
     public CorredoresEj2(String nombreCorredor, int metros){
         this.nombreCorredor = nombreCorredor;
         this.metros = metros;
-        this.metrosrecorridos = 0;
     }
 
-    public void correr() {
+    public void correr() throws InterruptedException {
         System.out.println("El corredor " + nombreCorredor + " ha empezado a correr");
 
-        while (metros < metrosrecorridos){
-            metros++;
-        }
+        Thread.sleep(metrosarecorrer*1000);
+     //   while (metros < metrosarecorrer){
+     //       Thread.sleep(metrosarecorrer*1000);
+     //       metros++;
+     //   }
 
 
         System.out.println("El corredor " + nombreCorredor + " ha terminado a correr");
     }
 
     @Override
-    public void run (){ this.correr();}
+    public void run (){
+        try {
+            this.correr();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void main (String[]args) throws InterruptedException{
 
         CorredoresEj2 pedro = new CorredoresEj2 ("Pedro",0);
@@ -40,7 +48,7 @@ public class CorredoresEj2 implements Runnable{
         CorredoresEj2 lorent = new CorredoresEj2("Lorent", 0);
 
         System.out.println("introduce los metros que tiene la carrera");
-        metrosrecorridos = sc.nextInt();
+        metrosarecorrer = sc.nextInt();
 
         System.out.println("-> Inicio de la Ejecución del pragrama Multihilo");
 
@@ -58,12 +66,35 @@ public class CorredoresEj2 implements Runnable{
         hilo_paco.start();
         hilo_lorent.start();
 
+        ArrayList<Thread.State> Estados = new ArrayList<>();
+            Estados.add(Thread.State.RUNNABLE);
 
+        while (hilo_pedro.isAlive() || (hilo_marco.isAlive()) || hilo_alfonso.isAlive() || hilo_paco.isAlive() || (hilo_lorent.isAlive())){
 
+            Thread.State estadoPedro = hilo_pedro.getState();
+            if (Estados.contains(estadoPedro)){
+                pedro.metros++;
+                //System.out.println("Pedro a recorrido " + pedro.metros);
+            }
+            Thread.State estadoMarco = hilo_marco.getState();
+            if (Estados.contains(estadoMarco)){
+                paco.metros++;
+            }
+            Thread.State estadoAlfonso = hilo_alfonso.getState();
+            if (Estados.contains(estadoAlfonso)){
+                alfonso.metros++;
+            }
+            Thread.State estadoPaco = hilo_paco.getState();
+            if (Estados.contains(estadoPaco)){
+                paco.metros++;
+            }
+            Thread.State estadoLorent = hilo_lorent.getState();
+            if (Estados.contains(estadoLorent)){
+                lorent.metros++;
+            }
+        }
 
         System.out.println("-> Fin de la Ejecución del pragrama Multihilo");
-
-
     }
 
 }
