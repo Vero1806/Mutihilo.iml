@@ -17,12 +17,13 @@ public class RatonMultihiloRunnableEntrega implements Runnable {
         this.tiempoAlimentacion = tiempoAlimentacion;
     }
 
-    public void comer(){
-        try{
+    public void comer() {
+        try {
             System.out.println(" | -> El ratón " + nombre + " ha comenzado a alimentarse.");
-            Thread.sleep(tiempoAlimentacion*1000);
-            System.out.println( " | <- El ratón " + nombre + " ha terminado de alimentarse");
-        }catch (InterruptedException e){
+            Thread.sleep(tiempoAlimentacion * 1000);
+            System.out.println(" | <- El ratón " + nombre + " ha terminado de alimentarse");
+
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
