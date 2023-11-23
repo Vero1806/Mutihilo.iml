@@ -32,11 +32,13 @@ public class CorredoresEj2 implements Runnable{
 
                 if (metros == metrosarecorrer){
                     System.out.println(nombreCorredor + " ha terminado la carrera.");
+
                 }
             }
         }posicion++;
         if (posicion == 1){
             System.out.println(nombreCorredor + " ha quedado primero.");
+
         }
     }
     @Override
@@ -74,7 +76,7 @@ public class CorredoresEj2 implements Runnable{
         hilo_paco.start();
         hilo_lorent.start();
 
-        while (hilo_pedro.isAlive() || hilo_marco.isAlive() || hilo_alfonso.isAlive() || hilo_paco.isAlive() || hilo_lorent.isAlive()){
+        while (hilo_pedro.isAlive() && hilo_marco.isAlive() && hilo_alfonso.isAlive() && hilo_paco.isAlive() && hilo_lorent.isAlive()){
 
         }
         System.out.println("-> Fin de la Ejecución del pragrama Multihilo");
