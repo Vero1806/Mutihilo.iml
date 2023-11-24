@@ -1,6 +1,10 @@
 package alumnos;
 
+//Veronica Prieto Prieto
+
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 /*
 Realiza un programa que calcule la suma de un array de números enteros. El tamaño del array se solicitará al usuario por pantalla, y
@@ -15,6 +19,15 @@ Comprueba que ambos resultados son iguales y calcula el tiempo que se tarda en r
 Nota: Para que los resultados sean más evidentes, puedes “retrasar artificialmente” la ejecución de la suma de cada elemento usando
 Thread.sleep (<numero_milisegundos>). Con 1 milisegundo suele ser suficiente.
  */
+
+
 public class ArrayEj3 {
+
+    static Scanner sc = new Scanner(System.in);
+    ArrayList<Integer> calcular = new ArrayList<Integer>();
+
+     //System.out.println("")
+
+
 
 }

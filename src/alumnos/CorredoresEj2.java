@@ -11,7 +11,7 @@ public class CorredoresEj2 implements Runnable{
     private int metros;
     private volatile static int metrosarecorrer;
     private volatile static boolean acabarCarrera = true;
-    private volatile static int posicion = 0;
+    private volatile static int contador = 0;
     static Scanner sc = new Scanner(System.in);
 
     public CorredoresEj2(String nombreCorredor, int metros){
@@ -32,8 +32,9 @@ public class CorredoresEj2 implements Runnable{
                 System.out.println("--->" + nombreCorredor + " ha recorrido " + distanciamostrada + " metros.");}
 
                 if (metros == metrosarecorrer){
+                    contador++;
+                    System.out.println("------>" + nombreCorredor + " ha quedado "+ contador + "º lugar. <------");
                     acabarCarrera = false;
-                    System.out.println("------>" + nombreCorredor + " ha ganado la carrera. <------");
                 }
             }
         }
@@ -73,8 +74,13 @@ public class CorredoresEj2 implements Runnable{
         hilo_paco.start();
         hilo_lorent.start();
 
-        while (hilo_pedro.isAlive() || hilo_marco.isAlive() || hilo_alfonso.isAlive() || hilo_paco.isAlive() || hilo_lorent.isAlive()){
-        }
+        hilo_pedro.join();
+        hilo_marco.join();
+        hilo_alfonso.join();
+        hilo_paco.join();
+        hilo_lorent.join();
+
+
         System.out.println("-> Fin de la Ejecución del pragrama Multihilo");
     }
 }

@@ -19,15 +19,13 @@ public class corredoresNew implements Runnable{
         while (distanciaRecorrida < distanciaCarrera) {
             // Incrementar distanciaRecorrida solo cuando el estado del hilo es RUNNABLE
             if (Thread.currentThread().getState() == Thread.State.RUNNABLE) {
-                distanciaRecorrida += 1;  // Incremento constante de 1 metro
+                distanciaRecorrida += 1;  //Incremento constante de 1 metro
                 int distanciamostrada = 0;
                 if (distanciaRecorrida > 0 && distanciaRecorrida%5==0)
                     distanciamostrada = distanciaRecorrida;
                 System.out.println(nombre + " ha recorrido " + distanciamostrada + " metros.");
             }
-
             // Pequeño retardo para simular la velocidad del corredor
-
                }
 
 
