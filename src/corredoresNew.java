@@ -1,5 +1,3 @@
-package alumnos;
-
 import java.lang.Thread;
 import java.util.Scanner;
 public class corredoresNew implements Runnable{
