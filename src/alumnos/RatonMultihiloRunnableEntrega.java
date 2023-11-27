@@ -11,15 +11,19 @@ public class RatonMultihiloRunnableEntrega implements Runnable {
 
     private String nombre;
     private long tiempoAlimentacion;
+    private int alimentoConsumido;
 
-    public RatonMultihiloRunnableEntrega(String nombre, int tiempoAlimentacion){
+    public RatonMultihiloRunnableEntrega(String nombre, int tiempoAlimentacion,int alimentoConsumido){
         this.nombre = nombre;
         this.tiempoAlimentacion = tiempoAlimentacion;
+        this.alimentoConsumido = alimentoConsumido;
     }
 
     public void comer() {
         try {
             System.out.println(" | -> El ratón " + nombre + " ha comenzado a alimentarse.");
+            alimentoConsumido++;
+            System.out.println(alimentoConsumido);
             Thread.sleep(tiempoAlimentacion * 1000);
             System.out.println(" | <- El ratón " + nombre + " ha terminado de alimentarse");
 
@@ -33,15 +37,15 @@ public class RatonMultihiloRunnableEntrega implements Runnable {
     }
 
     public static void main (String[] args) throws InterruptedException {
-        RatonMultihiloRunnableEntrega mickey = new RatonMultihiloRunnableEntrega("Mickey", 1);
-        RatonMultihiloRunnableEntrega jerry = new RatonMultihiloRunnableEntrega("Jerry", 1);
-        RatonMultihiloRunnableEntrega perez = new RatonMultihiloRunnableEntrega("Peréz", 1);
-        RatonMultihiloRunnableEntrega mickey1 = new RatonMultihiloRunnableEntrega("Mickey1", 1);
-        RatonMultihiloRunnableEntrega jerry1 = new RatonMultihiloRunnableEntrega("Jerry1", 1);
-        RatonMultihiloRunnableEntrega perez1 = new RatonMultihiloRunnableEntrega("Peréz1", 1);
-        RatonMultihiloRunnableEntrega mickey2 = new RatonMultihiloRunnableEntrega("Mickey2", 1);
-        RatonMultihiloRunnableEntrega jerry2= new RatonMultihiloRunnableEntrega("Jerry2", 1);
-        RatonMultihiloRunnableEntrega perez2 = new RatonMultihiloRunnableEntrega("Peréz2", 1);
+        RatonMultihiloRunnableEntrega mickey = new RatonMultihiloRunnableEntrega("Mickey", 1, 0);
+        RatonMultihiloRunnableEntrega jerry = new RatonMultihiloRunnableEntrega("Jerry", 1,0);
+        RatonMultihiloRunnableEntrega perez = new RatonMultihiloRunnableEntrega("Peréz", 1,0);
+        RatonMultihiloRunnableEntrega mickey1 = new RatonMultihiloRunnableEntrega("Mickey1", 1,0);
+        RatonMultihiloRunnableEntrega jerry1 = new RatonMultihiloRunnableEntrega("Jerry1", 1,0);
+        RatonMultihiloRunnableEntrega perez1 = new RatonMultihiloRunnableEntrega("Peréz1", 1,0);
+        RatonMultihiloRunnableEntrega mickey2 = new RatonMultihiloRunnableEntrega("Mickey2", 1,0);
+        RatonMultihiloRunnableEntrega jerry2= new RatonMultihiloRunnableEntrega("Jerry2", 1,0);
+        RatonMultihiloRunnableEntrega perez2 = new RatonMultihiloRunnableEntrega("Peréz2", 1,0);
         long tiempoInicio, tiempoFin;
         System.out.println("-> Inicio de la Ejecución del pragrama Multihilo");
 

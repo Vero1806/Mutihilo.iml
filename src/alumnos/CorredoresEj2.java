@@ -10,7 +10,6 @@ public class CorredoresEj2 implements Runnable{
     private String nombreCorredor;
     private int metros;
     private volatile static int metrosarecorrer;
-    private volatile static boolean acabarCarrera = true;
     private volatile static int contador = 0;
     static Scanner sc = new Scanner(System.in);
 
@@ -22,7 +21,7 @@ public class CorredoresEj2 implements Runnable{
 
     public void correr() throws InterruptedException {
 
-        while (acabarCarrera && metros<metrosarecorrer){
+        while (metros<metrosarecorrer){
             // Incrementar distanciaRecorrida solo cuando el estado del hilo es RUNNABLE
             if (Thread.currentThread().getState() == Thread.State.RUNNABLE) {
                 metros += 1;  // Incremento constante de 1 metro
@@ -34,7 +33,6 @@ public class CorredoresEj2 implements Runnable{
                 if (metros == metrosarecorrer){
                     contador++;
                     System.out.println("------>" + nombreCorredor + " ha quedado "+ contador + "º lugar. <------");
-                    acabarCarrera = false;
                 }
             }
         }

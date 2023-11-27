@@ -10,6 +10,8 @@ public class RatonMultihiloRunnable implements Runnable {
     private String nombre;
     private long tiempoAlimentacion;
 
+    private volatile static int alimentoConsumido;
+
     public RatonMultihiloRunnable (String nombre, int tiempoAlimentacion){
         this.nombre = nombre;
         this.tiempoAlimentacion = tiempoAlimentacion;
@@ -19,6 +21,8 @@ public class RatonMultihiloRunnable implements Runnable {
     public void comer(){
         try{
             System.out.println(" | -> El ratón " + nombre + " ha comenzado a alimentarse.");
+            alimentoConsumido++;
+                    System.out.println(alimentoConsumido);
             Thread.sleep(tiempoAlimentacion*1000); // sleep funciona con mili segundos, los convertimos a segundos al multiplicarlo por mil
             System.out.println( " | <- El ratón " + nombre + " ha terminado de alimentarse");
         }catch (InterruptedException e){
