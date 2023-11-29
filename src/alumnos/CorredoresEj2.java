@@ -11,6 +11,7 @@ public class CorredoresEj2 implements Runnable{
     private int metros;
     private volatile static int metrosarecorrer;
     private volatile static int contador = 0;
+
     static Scanner sc = new Scanner(System.in);
 
     public CorredoresEj2(String nombreCorredor, int metros){
