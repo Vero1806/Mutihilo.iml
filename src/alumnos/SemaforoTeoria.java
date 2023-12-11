@@ -16,8 +16,8 @@ public class SemaforoTeoria implements Runnable {
             System.out.println("Paso 3");
             Thread.sleep(1000);
            semaforo.release();
-           semaforo.release();
-           semaforo.release();
+//           semaforo.release();
+//           semaforo.release();
         }catch (InterruptedException ie){
             ie.printStackTrace();
         }

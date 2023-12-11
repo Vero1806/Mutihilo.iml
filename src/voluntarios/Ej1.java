@@ -23,13 +23,62 @@ Nota: Para que los resultados sean más evidentes, puedes “retrasar artificial
 
 
 import java.util.Scanner;
+import java.util.concurrent.Semaphore;
 
-public class Ej1  {
-    Scanner sc = new Scanner(System.in);
+public class Ej1 implements Runnable{
+
+    private char contenido;
+    String nombre;
+    static Scanner sc = new Scanner(System.in);
+    Semaphore semaforo = new Semaphore(1);
+
+    public Ej1(String nombre){
+        this.nombre = nombre;
+    }
+
+    public void leer (String palabra){
+        for (int i = 0; i < palabra.length(); i++) {
+            char letra = palabra.charAt(i);
+            //System.out.println(letra);
+        }
+    }
+
+    public void escribir(char letra){
+        System.out.println(letra);
+    }
+
+
+
+    @Override
+    public void run() {
+        try {
+//            if
+            semaforo.acquire();
+
+
+            semaforo.release();
+        }catch (InterruptedException ie){
+            ie.printStackTrace();
+        }
+    }
+
+
+    public static void main (String[]arg){
+
+        System.out.println("Dame una palabra para pasarla por el hilo");
+        String palabra = sc.next();
+
+
+//            Ej1 leer = new Ej1();
+//            Ej1 escribir = new Ej1();
 
 
 
 
+
+
+
+    }
 
 
 }
