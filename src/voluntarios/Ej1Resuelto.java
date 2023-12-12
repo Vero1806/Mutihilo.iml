@@ -61,6 +61,7 @@ public class Ej1Resuelto implements Runnable {
         }
     }
 
+
     @Override
     public void run() {
         if (Thread.currentThread().getName().equals("Hilo Escritor")) escritura();
